@@ -1,0 +1,8 @@
+{
+    "gdrive": {
+        "credential": {
+            "clientSecret": "/Users/lokeshchandra/Desktop/gcp/desktop_media_client_secret.json",
+            "token": "/Users/lokeshchandra/Desktop/gcp/token.json"
+        }
+    }
+}

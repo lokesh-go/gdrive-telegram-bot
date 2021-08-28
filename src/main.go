@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"log"
+
+	initModule "gdrive-telegram-bot/src/init"
+)
 
 func main() {
-	fmt.Println("testing project")
+	// Initialize
+	err := initModule.Start()
+	if err != nil {
+		log.Fatal("failed to initialize app - ", err)
+	}
 }
