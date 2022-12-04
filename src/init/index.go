@@ -1,8 +1,8 @@
 package init
 
 import (
+	telegram "gdrive-telegram-bot/src/clients/telegram"
 	configModule "gdrive-telegram-bot/src/config"
-	gdrive "gdrive-telegram-bot/src/storage/cloud/gdrive"
 	utils "gdrive-telegram-bot/src/utils"
 )
 
@@ -14,12 +14,14 @@ func Start() (err error) {
 		return err
 	}
 
-	// Initialize gdrive connection
-	gdriveModule := gdrive.New(config)
-	driveService, err := gdriveModule.Connect()
+	// Gets telegram connection
+	bot, err := telegram.New(config)
 	if err != nil {
 		return err
 	}
+
+	// Starts conversation
+	bot.StartConversation()
 
 	// Returns
 	return nil

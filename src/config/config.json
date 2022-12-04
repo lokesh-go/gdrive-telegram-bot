@@ -1,8 +1,33 @@
 {
     "gdrive": {
         "credential": {
-            "clientSecret": "/Users/lokeshchandra/Desktop/gcp/desktop_media_client_secret.json",
-            "token": "/Users/lokeshchandra/Desktop/gcp/token.json"
+            "clientSecret": "/Users/lokeshchandra/Desktop/google/credentials.json",
+            "token": "/Users/lokeshchandra/Desktop/google/token.json"
+        }
+    },
+    "telegram": {
+        "token": "",
+        "debug": true,
+        "updateTimeout": 60,
+        "template": {
+            "log": {
+                "tag": {
+                    "open": "╭─────────────",
+                    "mid": "├───────────── ",
+                    "close": "╰─────────────"
+                },
+                "query": "├ 🔎 𝙌𝙪𝙚𝙧𝙮: ",
+                "username": "├ 💁🏻‍♂ 𝙐𝙨𝙚𝙧𝙣𝙖𝙢𝙚: ",
+                "id": "├ 👤 𝙄𝘿: ",
+                "results": "├ ⚡ 𝙍𝙚𝙨𝙪𝙡𝙩𝙨 𝙁𝙤𝙪𝙣𝙙: ",
+                "error": "├ ⚠️ 𝙀𝙧𝙧𝙤𝙧: ",
+                "example": "├ 👉 𝙀𝙭: ",
+                "noResults": "├ 🔎 : ℕ𝕠 𝕣𝕖𝕤𝕦𝕝𝕥𝕤 𝕗𝕠𝕦𝕟𝕕 🤯"
+            },
+            "searchWaiting": "🧐 𝒮𝑒𝒶𝓇𝒸𝒽𝒾𝓃𝑔 ... 🔎🔎🔎 "
+        },
+        "admin": {
+            "chatId": ["LOKI", "THOR"]
         }
     }
 }

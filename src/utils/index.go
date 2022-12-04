@@ -3,6 +3,8 @@ package utils
 import (
 	"encoding/json"
 	"io/ioutil"
+
+	"github.com/dustin/go-humanize"
 )
 
 // ReadJSONFile ...
@@ -21,4 +23,10 @@ func ReadJSONFile(path string, instance interface{}) (err error) {
 
 	// Returns
 	return nil
+}
+
+// ConvertBytesToHumanReadableForm ...
+func ConvertBytesToHumanReadableForm(s uint64) (res string) {
+	// Returns
+	return humanize.Bytes(s)
 }
