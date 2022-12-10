@@ -1,25 +1,51 @@
 package telegram
 
 import (
-	"fmt"
 	"os"
 	"strconv"
+	"time"
 
 	gdrive "gdrive-telegram-bot/src/gdrive"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-func (b *Bot) sendWaitingMsg(update tgbotapi.Update) (resMsgId int) {
+func (b *Bot) sendWaitingMsg(update tgbotapi.Update) (quitChannel chan bool, resMsgId int) {
+	quitChannel = make(chan bool)
+
 	// Forms msg
-	msg := tgbotapi.NewMessage(update.Message.Chat.ID, b.config.Telegram.Template.SearchWaiting)
+	msg := tgbotapi.NewMessage(update.Message.Chat.ID, b.config.Telegram.Template.SearchWaiting[0])
 	msg.ReplyToMessageID = update.Message.MessageID
 
 	// Sends
 	sendRes, _ := b.bot.Send(msg)
 
+	// Updating msg
+	searchMsgIndex := 0
+	go func() {
+		for {
+			// Starts from initial msg
+			if searchMsgIndex == len(b.config.Telegram.Template.SearchWaiting) {
+				searchMsgIndex = 0
+			}
+
+			// Switch case
+			select {
+			case <-quitChannel:
+				return
+			default:
+				m := tgbotapi.NewEditMessageText(update.Message.Chat.ID, resMsgId, b.config.Telegram.Template.SearchWaiting[searchMsgIndex])
+				b.bot.Send(m)
+			}
+
+			// Sleep
+			searchMsgIndex++
+			time.Sleep(time.Duration(200 * time.Millisecond))
+		}
+	}()
+
 	// Returns
-	return sendRes.MessageID
+	return quitChannel, sendRes.MessageID
 }
 
 func (b *Bot) sendLogs(update tgbotapi.Update, resCount int, logErr interface{}) {
@@ -41,29 +67,33 @@ func (b *Bot) sendLogs(update tgbotapi.Update, resCount int, logErr interface{})
 	}
 }
 
-func (b *Bot) sendResults(update tgbotapi.Update, res interface{}, resMsgId int, cmd string) {
+func (b *Bot) sendResults(update tgbotapi.Update, res interface{}, resMsgId int, cmd string, quitChannel chan bool) {
+	// Define msg
+	var msg tgbotapi.EditMessageTextConfig
+
+	// Switch case
 	switch cmd {
 	case SearchCmd:
 		{
 			// Checks
+			logTemplate := b.config.Telegram.Template.Log
 			var text string
 			if res != nil {
 				srchRes := res.([]gdrive.SearchResponse)
-				fmt.Println(srchRes)
+				text = logTemplate.Tag.Open + "\n" + logTemplate.Results + strconv.Itoa(len(srchRes)) + "\n" + logTemplate.Tag.Close
 			} else {
-				logTemplate := b.config.Telegram.Template.Log
 				text = logTemplate.Tag.Open + "\n" + logTemplate.NoResults + "\n" + logTemplate.Tag.Close
 			}
-
-			// Sends
-			msg := tgbotapi.NewEditMessageText(update.Message.Chat.ID, resMsgId, text)
-			b.bot.Send(msg)
+			msg = tgbotapi.NewEditMessageText(update.Message.Chat.ID, resMsgId, text)
 		}
 	case Err:
 		{
 			text := res.(string)
-			msg := tgbotapi.NewEditMessageText(update.Message.Chat.ID, resMsgId, text)
-			b.bot.Send(msg)
+			msg = tgbotapi.NewEditMessageText(update.Message.Chat.ID, resMsgId, text)
 		}
 	}
+
+	// Sends
+	quitChannel <- true
+	b.bot.Send(msg)
 }

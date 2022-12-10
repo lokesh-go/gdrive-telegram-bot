@@ -12,7 +12,7 @@ func (b *Bot) StartConversation() {
 		}
 
 		// Sends
-		resMsgId := b.sendWaitingMsg(update)
+		quit, resMsgId := b.sendWaitingMsg(update)
 
 		// Gets response
 		var logErr interface{}
@@ -22,7 +22,7 @@ func (b *Bot) StartConversation() {
 		}
 
 		// Sends
-		b.sendResults(update, res, resMsgId, cmd)
+		b.sendResults(update, res, resMsgId, cmd, quit)
 
 		// Sends
 		b.sendLogs(update, 0, logErr)

@@ -27,7 +27,7 @@ type Config struct {
 				Example   string
 				NoResults string
 			}
-			SearchWaiting string
+			SearchWaiting []string
 		}
 		Admin struct {
 			ChatId []string
