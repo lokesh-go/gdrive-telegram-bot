@@ -3,20 +3,12 @@ package telegram
 import (
 	"net/http"
 	"strings"
-
-	gdrive "gdrive-telegram-bot/src/gdrive"
 )
 
 // Router ...
 func (b *Bot) router(reqMsg string) (res interface{}, cmd string, statusCode int, err error) {
-	// Converts into lower
-	req := strings.ToLower(reqMsg)
-
 	// Gets key details
-	cmd, text := getSearchKeyDetails(req)
-
-	// Gets the gdrive module
-	gdriveModule := gdrive.New(b.config)
+	cmd, text := getSearchKeyDetails(reqMsg)
 
 	// Commands cases
 	switch cmd {
@@ -28,7 +20,7 @@ func (b *Bot) router(reqMsg string) (res interface{}, cmd string, statusCode int
 			}
 
 			// Search file
-			res, err = gdriveModule.FileSearch(text)
+			res, err = b.gdriveModule.FileSearch(text)
 			if err != nil {
 				return nil, Err, http.StatusInternalServerError, err
 			}
@@ -49,6 +41,8 @@ func (b *Bot) router(reqMsg string) (res interface{}, cmd string, statusCode int
 }
 
 func getSearchKeyDetails(req string) (searchCmd, searchText string) {
+	req = strings.ToLower(req)
+
 	// Checks for search
 	if strings.HasPrefix(req, SearchCmd) {
 		// Splits

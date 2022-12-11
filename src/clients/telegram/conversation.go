@@ -1,5 +1,9 @@
 package telegram
 
+import (
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+)
+
 // StartConversation ...
 func (b *Bot) StartConversation() {
 	// Starts
@@ -11,20 +15,28 @@ func (b *Bot) StartConversation() {
 			continue
 		}
 
-		// Sends
-		quit, resMsgId := b.sendWaitingMsg(update)
-
-		// Gets response
-		var logErr interface{}
-		res, cmd, statusCode, err := b.router(update.Message.Text)
-		if err != nil {
-			res, logErr = b.getCustomErrorMsg(statusCode, err)
-		}
-
-		// Sends
-		b.sendResults(update, res, resMsgId, cmd, quit)
-
-		// Sends
-		b.sendLogs(update, 0, logErr)
+		// Starts process
+		go b.startProcess(update)
 	}
+}
+
+func (b *Bot) startProcess(update tgbotapi.Update) {
+	// Sends
+	quit, resMsgId := b.sendWaitingMsg(update)
+
+	// Gets response
+	var logErr interface{}
+	res, cmd, statusCode, err := b.router(update.Message.Text)
+	if err != nil {
+		res, logErr = b.getCustomErrorMsg(statusCode, err)
+	}
+
+	// Sends
+	resCount, errLog := b.sendResults(update, res, resMsgId, cmd, quit)
+	if errLog != nil {
+		logErr = errLog
+	}
+
+	// Sends
+	b.sendLogs(update, resCount, logErr)
 }

@@ -6,6 +6,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 
 	configModule "gdrive-telegram-bot/src/config"
+	gdrive "gdrive-telegram-bot/src/gdrive"
 )
 
 // Bot ...
@@ -13,6 +14,7 @@ type Bot struct {
 	bot            *tgbotapi.BotAPI
 	updatesChannel tgbotapi.UpdatesChannel
 	config         *configModule.Config
+	gdriveModule   *gdrive.Module
 }
 
 // New ...
@@ -23,11 +25,18 @@ func New(config *configModule.Config) (*Bot, error) {
 		return nil, err
 	}
 
+	// Gets the gdrive module
+	gdriveModule, err := gdrive.New(config)
+	if err != nil {
+		return nil, err
+	}
+
 	// Returns
 	return &Bot{
 		bot:            bot,
 		updatesChannel: updatesChannel,
 		config:         config,
+		gdriveModule:   gdriveModule,
 	}, nil
 }
 

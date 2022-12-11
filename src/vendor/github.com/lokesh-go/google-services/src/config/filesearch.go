@@ -9,6 +9,7 @@ const (
 	Corpora                          = "allDrives"
 	Spaces                           = "drive"
 	FileSearchFieldsIncluded         = "nextPageToken, files(id, driveId, name, mimeType, size, fileExtension, md5Checksum)"
+	FileCreateFieldsIncluded         = "id"
 	FileSearchQueryNameContains      = "name contains '"
 	FileSearchQueryNotContainsFolder = "mimeType != 'application/vnd.google-apps.folder'"
 	FileSearchQueryNotContainsTrash  = "trashed=false"

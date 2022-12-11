@@ -6,9 +6,9 @@ import (
 
 // Get ...
 func Get() (scope string) {
-	// Drive read only scope
-	readOnly := drive.DriveReadonlyScope
+	// Drive scope
+	driveScope := drive.DriveScope
 
 	// Returns
-	return readOnly
+	return driveScope
 }

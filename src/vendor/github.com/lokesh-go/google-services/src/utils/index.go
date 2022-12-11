@@ -3,6 +3,7 @@ package utils
 import (
 	"encoding/json"
 	"io/ioutil"
+	"os"
 )
 
 // ReadJSONFile ...
@@ -21,4 +22,16 @@ func ReadJSONFile(path string, instance interface{}) (err error) {
 
 	// Returns
 	return nil
+}
+
+// OpenFile ...
+func OpenFile(path string) (file *os.File, err error) {
+	// Opens
+	file, err = os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+
+	// Return
+	return file, nil
 }

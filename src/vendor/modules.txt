@@ -27,7 +27,7 @@ github.com/googleapis/gax-go/v2
 github.com/googleapis/gax-go/v2/apierror
 github.com/googleapis/gax-go/v2/apierror/internal/proto
 github.com/googleapis/gax-go/v2/internal
-# github.com/lokesh-go/google-services/src v0.0.0-20221127165737-2b016dc5ab76
+# github.com/lokesh-go/google-services/src v0.0.0-20221210091113-c371d5dc65ec
 ## explicit
 github.com/lokesh-go/google-services/src/config
 github.com/lokesh-go/google-services/src/google

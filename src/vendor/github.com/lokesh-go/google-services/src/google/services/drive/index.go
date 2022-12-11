@@ -11,6 +11,7 @@ import (
 	"google.golang.org/api/option"
 
 	config "github.com/lokesh-go/google-services/src/config"
+	"github.com/lokesh-go/google-services/src/utils"
 )
 
 // Service ...
@@ -50,6 +51,33 @@ func (s *Service) FileSearch(searchKey string, searchExtend bool, removeDownload
 	return filesData, nil
 }
 
+// FileCreate ...
+func (s *Service) FileCreate(fileName string, mimeType string, folderId string, filePath string) (uploadedFileId string, err error) {
+	// Forms file metadata
+	fileMetadata := &drive.File{
+		Name:     fileName,
+		MimeType: mimeType,
+		Parents:  []string{folderId},
+	}
+
+	// Gets file
+	file, err := utils.OpenFile(filePath)
+	if err != nil {
+		return uploadedFileId, err
+	}
+	defer file.Close()
+
+	// Upload file
+	res, err := s.drive.Files.Create(fileMetadata).Media(file).Fields(config.FileCreateFieldsIncluded).Do()
+	if err != nil {
+		return uploadedFileId, err
+	}
+
+	// Returns
+	return res.Id, nil
+}
+
+// FileDownload ...
 func (s *Service) FileDownload(fileId string) (res *http.Response, err error) {
 	// Downloads
 	res, err = s.drive.Files.Get(fileId).Download()

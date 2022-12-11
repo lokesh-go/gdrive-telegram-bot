@@ -18,6 +18,7 @@
                 },
                 "query": "├ 🔎 𝙌𝙪𝙚𝙧𝙮: ",
                 "username": "├ 💁🏻‍♂ 𝙐𝙨𝙚𝙧𝙣𝙖𝙢𝙚: ",
+                "name": "├ 👨 𝙉𝙖𝙢𝙚: ",
                 "id": "├ 👤 𝙄𝘿: ",
                 "results": "├ ⚡ 𝙍𝙚𝙨𝙪𝙡𝙩𝙨 𝙁𝙤𝙪𝙣𝙙: ",
                 "error": "├ ⚠️ 𝙀𝙧𝙧𝙤𝙧: ",
@@ -33,7 +34,36 @@
             ]
         },
         "admin": {
-            "chatId": ["LOKI", "THOR"]
+            "chatId": ["LOKI"]
+        },
+        "results": {
+            "worker": {
+                "download1": "https://in.tobot.workers.dev/",
+                "download2": "https://cdn.movies-mca.workers.dev/",
+                "mediaLink": "https://stremio.gmedia.workers.dev/",
+                "searchRes": "https://gdrive.movies-mca.workers.dev/results?id="
+            },
+            "template": {
+                "placeholder": {
+                    "query": "{search_query}",
+                    "count": "{search_count}",
+                    "results": "{search_results}",
+                    "hexColor": "{randHexColor}",
+                    "gdriveDownloadLink": "{gdriveDownloadLink}",
+                    "fileName": "{fileName}",
+                    "fileSize": "{fileSize}",
+                    "downloadLink1": "{downloadLink1}",
+                    "downloadLink2": "{downloadLink2}",
+                    "mediaLink": "{mediaLink}",
+                    "mxPlayerLink": "{mxPlayerLink}"
+                },
+                "searchResults": "<div class='col-lg-6 col-md-6 mt-3'><div class='icon-box' data-aos='zoom-in-left'><div class='icon'><i class='bx bxs-videos' style='color: #{randHexColor};'></i></div><h4 class='title text-break fs-6'><a href='{gdriveDownloadLink}' target='_blank' referrerpolicy='same-origin'>📂 {fileName}</a></h4><p class='description fw-bold'>💾 {fileSize}</p><p class='description mt-1'><a class='btn btn-outline-primary btn-sm' role='button' href='{downloadLink1}' >⚡<strong> Download 1</strong></a>&nbsp;&nbsp;<a class='btn btn-outline-success btn-sm' role='button' href='{downloadLink2}' >⚡<strong> Download 2</strong></a>&nbsp;&nbsp;</p>",
+                "mxPlayer": "intent:{mediaLink}#Intent;package=com.mxtech.videoplayer.ad;S.title={fileName};end",
+                "otherPlayer": "<p class='description mt-1'><a href='vlc://{mediaLink}' style='color: #444444;'>▶️<strong> VLC</strong></a>&nbsp;&nbsp;<a href='{mxPlayerLink}' style='color: #444444;'>▶️<strong> MX Player</strong></a>&nbsp;&nbsp;<a href='nplayer-{mediaLink}' style='color: #444444;'>▶️<strong> nPlayer</strong></a></p>"
+            },
+            "filePath": "/Users/lokeshchandra/Desktop/google/",
+            "uploadFolderId": "1GdpdYO-LI8OnZCBSPy1cNYRxH_ggJLQZ",
+            "buttonText": "🔎 Tap to view"
         }
     }
 }
