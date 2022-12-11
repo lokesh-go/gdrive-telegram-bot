@@ -19,14 +19,21 @@ type Config struct {
 					Mid   string
 					Close string
 				}
-				Query     string
-				UserName  string
-				Name      string
-				ID        string
-				Results   string
-				Error     string
-				Example   string
-				NoResults string
+				Query       string
+				UserName    string
+				Name        string
+				ID          string
+				Results     string
+				Error       string
+				Example     string
+				NoResults   string
+				CPU         string
+				RAM         string
+				Goroutine   string
+				DownSpeed   string
+				UploadSpeed string
+				Latency     string
+				BotName     string
 			}
 			SearchWaiting []string
 		}

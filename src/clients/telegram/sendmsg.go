@@ -149,6 +149,11 @@ func (b *Bot) sendResults(update tgbotapi.Update, res interface{}, resMsgId int,
 				msg = tgbotapi.NewEditMessageText(update.Message.Chat.ID, resMsgId, text)
 			}
 		}
+	case InfoCmd:
+		{
+			text := res.(string)
+			msg = tgbotapi.NewEditMessageText(update.Message.Chat.ID, resMsgId, text)
+		}
 	case Err:
 		{
 			text := res.(string)
