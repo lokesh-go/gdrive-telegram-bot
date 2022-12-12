@@ -416,8 +416,8 @@ github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+o
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
-github.com/lokesh-go/google-services/src v0.0.0-20221210091113-c371d5dc65ec h1:1MoLf9QJc4SD0i3Sxa66vzmldtJw1R4lSsqsI7FR53c=
-github.com/lokesh-go/google-services/src v0.0.0-20221210091113-c371d5dc65ec/go.mod h1:gpWstoodltI4CMUClu0QyVXItLRqYvb7KVk0FOhaIu0=
+github.com/lokesh-go/google-services/src v0.0.0-20221211130052-03da062c10fc h1:HH3Kl3FOFWdcrSZ4BK4MZNiNYEOOw5UPzpkp87bTOFE=
+github.com/lokesh-go/google-services/src v0.0.0-20221211130052-03da062c10fc/go.mod h1:gpWstoodltI4CMUClu0QyVXItLRqYvb7KVk0FOhaIu0=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
 github.com/rogpeppe/fastuuid v1.2.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6LYCDYWNEvQ=

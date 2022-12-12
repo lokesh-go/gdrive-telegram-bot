@@ -11,3 +11,10 @@ type File struct {
 	MimeType      string `json:"mimeType"`
 	Md5Checksum   string `json:"md5Checksum"`
 }
+
+// DriveDetails ...
+type DriveDetails struct {
+	Storage         int64
+	Usages          int64
+	ShareDriveNames []string
+}

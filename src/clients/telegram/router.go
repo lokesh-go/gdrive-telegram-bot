@@ -34,6 +34,7 @@ func (b *Bot) router(reqMsg string) (res interface{}, cmd string, statusCode int
 	case DriveCmd:
 		{
 			// Gets drive counts
+
 		}
 	case InfoCmd:
 		{
@@ -94,7 +95,7 @@ func (b *Bot) getSystemInformation() (res interface{}) {
 
 	// Gets template
 	logTemplate := b.config.Telegram.Template.Log
-	resText := logTemplate.Tag.Open + "\n" + logTemplate.BotName + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.CPU + strconv.Itoa(cpu) + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.RAM + utils.ConvertBytesToHumanReadableForm(mem.TotalAlloc) + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.Goroutine + strconv.Itoa(numGoRoutine) + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.DownSpeed + downSpeed + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.UploadSpeed + uploadSpeed + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.Latency + latency + "\n" + logTemplate.Tag.Close
+	resText := logTemplate.Tag.Open + "\n" + logTemplate.BotName + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.CPU + strconv.Itoa(cpu) + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.RAM + utils.ConvertBytesToHumanReadableForm(mem.HeapAlloc) + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.Goroutine + strconv.Itoa(numGoRoutine) + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.DownSpeed + downSpeed + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.UploadSpeed + uploadSpeed + "\n" + logTemplate.Tag.Mid + "\n" + logTemplate.Latency + latency + "\n" + logTemplate.Tag.Close
 
 	// Assigns
 	res = resText

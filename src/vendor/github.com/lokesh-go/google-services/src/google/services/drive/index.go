@@ -77,6 +77,37 @@ func (s *Service) FileCreate(fileName string, mimeType string, folderId string, 
 	return res.Id, nil
 }
 
+// DriveDetails ...
+func (s *Service) DriveDetails() (driveDetails *DriveDetails, err error) {
+	// Gets storage quota details
+	about, err := s.drive.About.Get().Fields("storageQuota").Do()
+	if err != nil {
+		return nil, err
+	}
+
+	// Gets drive details
+	driveList, err := s.drive.Drives.List().Do()
+	if err != nil {
+		return nil, err
+	}
+
+	// Forms drives name
+	shareDriveNames := []string{}
+	for _, drive := range driveList.Drives {
+		shareDriveNames = append(shareDriveNames, drive.Name)
+	}
+
+	// Forms response
+	driveDetails = &DriveDetails{
+		Storage:         about.StorageQuota.Limit,
+		Usages:          about.StorageQuota.Usage,
+		ShareDriveNames: shareDriveNames,
+	}
+
+	// Returns
+	return driveDetails, nil
+}
+
 // FileDownload ...
 func (s *Service) FileDownload(fileId string) (res *http.Response, err error) {
 	// Downloads
