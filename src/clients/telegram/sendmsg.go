@@ -100,8 +100,16 @@ func (b *Bot) sendResults(update tgbotapi.Update, res interface{}, resMsgId int,
 					fileName := searchText + "_" + randomText + ".html"
 
 					// Creates file
-					filePath := b.config.Telegram.Results.FilePath + fileName
-					f, _ := os.Create(filePath)
+					filePath := os.Getenv(b.config.Telegram.Results.FilePath) + fileName
+					f, err := os.Create(filePath)
+					if err != nil {
+						userErrMsg, logErrMsg := b.getCustomErrorMsg(http.StatusInternalServerError, err)
+						text := userErrMsg.(string)
+						msg = tgbotapi.NewEditMessageText(update.Message.Chat.ID, resMsgId, text)
+						quitChannel <- true
+						b.bot.Send(msg)
+						return resCount, logErrMsg
+					}
 
 					// Writes file string
 					f.WriteString(templateString)

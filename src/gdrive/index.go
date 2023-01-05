@@ -1,9 +1,11 @@
 package gdrive
 
 import (
+	"net/url"
+	"os"
+
 	configModule "gdrive-telegram-bot/src/config"
 	utils "gdrive-telegram-bot/src/utils"
-	"net/url"
 
 	googleService "github.com/lokesh-go/google-services/src/google"
 	driveService "github.com/lokesh-go/google-services/src/google/services/drive"
@@ -22,8 +24,8 @@ func New(config *configModule.Config) (*Module, error) {
 		DriveScope: true,
 	}
 	gconfig := &googleService.Config{
-		ClientSecretFilePath: config.GDrive.Credential.ClientSecret,
-		TokenPath:            config.GDrive.Credential.Token,
+		ClientSecretFilePath: os.Getenv(config.GDrive.Credential.ClientSecret),
+		TokenPath:            os.Getenv(config.GDrive.Credential.Token),
 		Scopes:               scopes,
 	}
 

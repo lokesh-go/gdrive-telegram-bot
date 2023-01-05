@@ -1,8 +1,8 @@
 {
     "gdrive": {
         "credential": {
-            "clientSecret": "/Users/lokeshchandra/Desktop/google/credentials.json",
-            "token": "/Users/lokeshchandra/Desktop/google/token.json"
+            "clientSecret": "GDRIVE_CLIENT_SECRET_PATH",
+            "token": "GDRIVE_TOKEN_PATH"
         }
     },
     "telegram": {
@@ -34,11 +34,11 @@
 
             },
             "searchWaiting": [
+                "🧐 𝒮𝑒𝒶𝓇𝒸𝒽𝒾𝓃𝑔 ... ",
                 "🧐 𝒮𝑒𝒶𝓇𝒸𝒽𝒾𝓃𝑔 ... 🔎",
                 "🧐 𝒮𝑒𝒶𝓇𝒸𝒽𝒾𝓃𝑔 ... 🔎🔎",
                 "🧐 𝒮𝑒𝒶𝓇𝒸𝒽𝒾𝓃𝑔 ... 🔎🔎🔎",
-                "🧐 𝒮𝑒𝒶𝓇𝒸𝒽𝒾𝓃𝑔 ... 🔎🔎🔎🔎",
-                "🧐 𝒮𝑒𝒶𝓇𝒸𝒽𝒾𝓃𝑔 ... 🔎🔎🔎🔎🔎"
+                "🧐 𝒮𝑒𝒶𝓇𝒸𝒽𝒾𝓃𝑔 ... 🔎🔎🔎🔎"
             ]
         },
         "admin": {
@@ -69,7 +69,7 @@
                 "mxPlayer": "intent:{mediaLink}#Intent;package=com.mxtech.videoplayer.ad;S.title={fileName};end",
                 "otherPlayer": "<p class='description mt-1'><a href='vlc://{mediaLink}' style='color: #444444;'>▶️<strong> VLC</strong></a>&nbsp;&nbsp;<a href='{mxPlayerLink}' style='color: #444444;'>▶️<strong> MX Player</strong></a>&nbsp;&nbsp;<a href='nplayer-{mediaLink}' style='color: #444444;'>▶️<strong> nPlayer</strong></a></p>"
             },
-            "filePath": "/Users/lokeshchandra/Desktop/google/",
+            "filePath": "DOWNLOAD_HTML_FILE_PATH",
             "uploadFolderId": "1GdpdYO-LI8OnZCBSPy1cNYRxH_ggJLQZ",
             "buttonText": "🔎 Tap to view"
         }

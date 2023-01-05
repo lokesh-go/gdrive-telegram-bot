@@ -2,11 +2,12 @@ package telegram
 
 import (
 	"fmt"
-	"gdrive-telegram-bot/src/utils"
 	"net/http"
 	"runtime"
 	"strconv"
 	"strings"
+
+	"gdrive-telegram-bot/src/utils"
 
 	"github.com/showwin/speedtest-go/speedtest"
 )
