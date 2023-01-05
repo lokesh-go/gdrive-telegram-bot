@@ -3,7 +3,7 @@ package config
 const (
 	FileDownloadLink                 = "https://drive.google.com/uc?id=<fileIdPlaceholder>&export=download"
 	FileDownloadLinkPlaceholder      = "<fileIdPlaceholder>"
-	FileSearchPageSize               = 50
+	FileSearchPageSize               = 100
 	SupportsAllDrives                = true
 	IncludeItemsFromAllDrives        = true
 	Corpora                          = "allDrives"
