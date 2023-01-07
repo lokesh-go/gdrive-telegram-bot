@@ -46,10 +46,10 @@
         },
         "results": {
             "worker": {
-                "download1": "https://in.tobot.workers.dev/",
-                "download2": "https://cdn.movies-mca.workers.dev/",
-                "mediaLink": "https://stremio.gmedia.workers.dev/",
-                "searchRes": "https://gdrive.movies-mca.workers.dev/results?id="
+                "download1": "https://abc.workers.dev/",
+                "download2": "https://abc2.workers.dev/",
+                "mediaLink": "https://abc3.workers.dev/",
+                "searchRes": "https://abc4.workers.dev/results?id="
             },
             "template": {
                 "placeholder": {
